@@ -1,4 +1,4 @@
-module lightbot
+module github.com/loic2002/LightBot
 
 go 1.18
 
