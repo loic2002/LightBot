@@ -7,6 +7,7 @@ import (
 	"syscall"
 
 	"github.com/bwmarrin/discordgo"
+	"github.com/loic2002/LightBot/internal/commands"
 	"github.com/loic2002/LightBot/internal/config"
 	"github.com/loic2002/LightBot/internal/events"
 )
@@ -26,6 +27,7 @@ func InitDiscordBot() {
 		discordgo.IntentGuildMembers | discordgo.IntentGuildMessages)
 
 	registerEvents(dgBot)
+	registerCommnds(dgBot)
 
 	// Open a websocket connection to Discord and begin listening.
 	err = dgBot.Open()
@@ -53,4 +55,19 @@ func registerEvents(dg *discordgo.Session){
 	
 	dg.AddHandler(events.NewReadyHandler().Handler)
 	dg.AddHandler(events.NewMessageHandler().Handler)
+}
+
+func registerCommnds(dg *discordgo.Session){
+
+	cmdHandler := commands.NewCommandHandler(config.Prefix)
+	cmdHandler.OnError = func(err error, ctx *commands.Context) {
+		ctx.Session.ChannelMessageSend(ctx.Message.ChannelID,
+			fmt.Sprintf("Command Execution failed: %s", err.Error()))
+	}
+
+	cmdHandler.RegisterCommand(&commands.CmdPing{})
+	cmdHandler.RegisterMiddleware(&commands.MwPermissions{})
+
+	dg.AddHandler(cmdHandler.HandleMessage)
+	
 }
