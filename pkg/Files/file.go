@@ -6,17 +6,13 @@ import (
 	"io/ioutil"
 )
 
-func ReadFile(path, filename string) ([]byte, error) {
-
-	if len(path) == 0 {
-		return nil, errors.New("the file path is empty")
-	}
+func ReadFile(filename string) ([]byte, error) {
 
 	if len(filename) == 0 {
 		return nil, errors.New("the filename is empty")
 	}
 
-	file, err := ioutil.ReadFile(path+filename)
+	file, err := ioutil.ReadFile(filename)
 
 	if err != nil {
 		fmt.Println(err.Error())

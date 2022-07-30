@@ -5,11 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "LightBot",
+            "name": "Debug Backend",
             "type": "go",
             "request": "launch",
-            "mode": "debug",
-            "program": "${workspaceFolder}/cmd"
-        } 
+            "mode": "auto",
+            "program": "${workspaceFolder}/cmd/",
+            "cwd": "${workspaceFolder}",
+            "env": {},
+            "args": ["-c", "./config/config.json"]
+          }
     ]
 }

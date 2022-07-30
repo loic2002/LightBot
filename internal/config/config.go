@@ -22,9 +22,9 @@ type configStruct struct {
 
 }
 
-func ReadConfig() error {
+func ReadConfig( filename string) error {
 
-	data, err := files.ReadFile("./../config/","config.json")
+	data, err := files.ReadFile(filename)
 
 	if err != nil {
 		fmt.Println(err.Error())
