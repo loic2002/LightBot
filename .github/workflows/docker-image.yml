@@ -23,4 +23,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: loic1112/lightbot:lastest, loic1112/lightbot:${{ github.nun_number }}
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/lightbot:latest, ${{ secrets.DOCKERHUB_USERNAME }}/lightbot:${{ github.nun_number }}
