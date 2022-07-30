@@ -10,12 +10,14 @@ import (
 var (
 	Token string
 	DefaultLocalization string
+	Prefix string
 
 	config *configStruct
 )
 
 type configStruct struct {
 	Token string `json:"Token"`
+	Prefix string `json:"Prefix"`
 	DefaultLocalization string `json:"DefaultLocalization"`
 
 }
@@ -37,7 +39,9 @@ func ReadConfig() error {
 	}
 
 	Token = config.Token
+	Prefix = config.Prefix
 	DefaultLocalization = config.DefaultLocalization
+
 
 	return nil
 

@@ -1,5 +1,6 @@
 {
-    "Token": "",
+    "Token": "", 
+    "Prefix": "!!",
     "DefaultLocalization": "en-en"
   }
   
