@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${workspaceFolder}/cmd/",
+            "program": "${workspaceFolder}/cmd/LightBot/",
             "cwd": "${workspaceFolder}",
             "env": {},
             "args": ["-c", "./config/config.json"]
