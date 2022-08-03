@@ -10,11 +10,15 @@ func (c *CmdPing) Description() string {
 	return "Pong!"
 }
 
+func (c *CmdPing) Version() string {
+	return "1.0.0"
+}
+
 func (c *CmdPing) AdminRequired() bool {
 	return true
 }
 
 func (c *CmdPing) Exec(ctx *Context) (err error) {
-	_, err = ctx.Session.ChannelMessageSend(ctx.Message.ChannelID, "Pong!")
+	_, err = ctx.Session.ChannelMessageSend(ctx.Message.ChannelID, "Pong!"+c.Version())
 	return
 }
