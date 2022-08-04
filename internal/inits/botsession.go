@@ -24,7 +24,7 @@ func InitDiscordBot() {
 	}
 
 	dgBot.Identify.Intents = discordgo.MakeIntent(
-		discordgo.IntentGuildMembers | discordgo.IntentGuildMessages)
+		discordgo.IntentGuildMembers | discordgo.IntentGuildMessages | discordgo.IntentGuilds)
 
 	registerEvents(dgBot)
 	registerCommnds(dgBot)
@@ -52,9 +52,15 @@ func registerEvents(dg *discordgo.Session){
 	joinLeaveHandler := events.NewJoinLeaveHandler()
 	dg.AddHandler(joinLeaveHandler.HandlerJoin)
 	dg.AddHandler(joinLeaveHandler.HandlerLeave)
-	
+
+	guildCreateDeleteHandler := events.NewGuildCreateDelete()
+	dg.AddHandler(guildCreateDeleteHandler.HandlerCreateGuild)
+	dg.AddHandler(guildCreateDeleteHandler.HandlerDeleteGuild)
+
 	dg.AddHandler(events.NewReadyHandler().Handler)
 	dg.AddHandler(events.NewMessageHandler().Handler)
+
+
 }
 
 func registerCommnds(dg *discordgo.Session){

@@ -19,6 +19,6 @@ func (c *CmdPing) AdminRequired() bool {
 }
 
 func (c *CmdPing) Exec(ctx *Context) (err error) {
-	_, err = ctx.Session.ChannelMessageSend(ctx.Message.ChannelID, "Pong!"+c.Version())
+	_, err = ctx.Session.ChannelMessageSend(ctx.Message.ChannelID, "Pong!")
 	return
 }
