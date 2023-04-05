@@ -1,0 +1,9 @@
+version: '3'
+services:
+  lightbot:
+    image: loic1112/lightbot:latest
+    volumes:
+      - lightbot:/config
+    
+volumes:
+  lightbot:
