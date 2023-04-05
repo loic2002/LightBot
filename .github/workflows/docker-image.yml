@@ -1,8 +1,8 @@
-name: Docker Image CI
+name: Docker Image CI Lasted
 
 on:
   push:
-    branches: [ "main", "dev" ]
+    branches: [ "main" ]
   pull_request:
     branches: none # [ "main" ]
 
