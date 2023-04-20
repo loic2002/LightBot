@@ -20,6 +20,7 @@ func main() {
 
 
 	fmt.Println("Program started !")
+	fmt.Println("Version 1 !")
 
 	fmt.Println("Read file config")
 	err := config.ReadConfig(*flagConfig)
